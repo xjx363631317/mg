@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.7
 
 # Include dist
 ADD dist/ /root/dist/
@@ -25,9 +25,9 @@ RUN apk -U --no-cache add \
     adduser -S -s /bin/ash -u 2000 -D -g 2000 cowrie && \
 
 # Install cowrie from git
-    git clone --depth=1 https://github.com/micheloosterhof/cowrie /home/cowrie/cowrie/ -b v1.3.0 && \
+    git clone --depth=1 https://github.com/micheloosterhof/cowrie /home/cowrie/cowrie/ && \
     cd /home/cowrie/cowrie && \
-    pip install --no-cache-dir --upgrade cffi pip && \
+    pip install --no-cache-dir --upgrade cffi && \
     pip install --no-cache-dir --upgrade -r requirements.txt && \
 
 # Setup configs
